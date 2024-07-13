@@ -10,6 +10,7 @@ api_key = os.getenv('API_KEY')
 app.config['SECRET_KEY'] = SECRET_KEY
 bootstrap = Bootstrap5(app=app)
 API_KEY = api_key
+print(API_KEY)
 
 @app.route('/', methods=['POST', 'GET'])
 def main():
@@ -19,6 +20,7 @@ def main():
             geocoding_url = f'http://api.openweathermap.org/geo/1.0/direct?q={country}&limit=5&appid={API_KEY}'
             response = requests.get(url=geocoding_url)
             data = response.json()
+            print(data)
             lat = data[0]['lat']
             lon = data[0]['lon']
         except IndexError:
